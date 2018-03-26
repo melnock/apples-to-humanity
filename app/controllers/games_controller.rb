@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :logged_in?
 
   def index
     @games = Game.all
@@ -15,6 +16,8 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
+      @deal = Deal.create(game_id: @game.id, player_id: current_user.id)
+
       redirect_to @game
     else
       redirect_to new_game_path
@@ -26,6 +29,10 @@ class GamesController < ApplicationController
   end
 
   def show
+    set_game
+    @player = current_user
+    @deal = Deal.new
+    @deals = Deal.all.select {|deal| deal.game == @game}
   end
 
   def destroy
