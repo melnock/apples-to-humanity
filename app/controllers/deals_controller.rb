@@ -5,8 +5,8 @@ class DealsController < ApplicationController
   end
 
   def create
-    @deal = Deal.new(deal_params)
-    @deal.save
+    @deal = Deal.where(deal_params).first_or_create
+    redirect_to game_path(@deal.game_id)
   end
 
   def edit
