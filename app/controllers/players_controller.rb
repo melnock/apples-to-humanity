@@ -5,7 +5,8 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @player = Player.new(player_params)
+    @player = Player.create(player_params)
+    redirect_to player_path(@player.id)
   end
 
   def show
@@ -15,7 +16,7 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:username, :password_digest)
+    params.require(:player).permit(:username, :password, :password_confirmation)
   end
 
 end
