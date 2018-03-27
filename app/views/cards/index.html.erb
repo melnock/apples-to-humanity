@@ -1,0 +1,17 @@
+<h2>WHITE CARDS:</h2>
+<ul>
+  <% @cards.select do |card| %>
+  <% if card.black == false%>
+    <li><%= link_to card.content, card_path(card) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>BLACK CARDS:</h2>
+<ul>
+  <% @cards.select do |card| %>
+  <% if card.black == true%>
+    <li><%= link_to card.content, card_path(card) %></li>
+    <% end %>
+  <% end %>
+</ul>
