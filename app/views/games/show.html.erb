@@ -1,7 +1,6 @@
-<%= @game.name %>
+<h3>Game Name: <%= @game.name %> </h3>
 
-
-
+<h3>Players Already Joined:</h3>
 <% @deals.each do |deal| %>
   <p>Username: <%= deal.player.username %></p>
 <% end %>
@@ -9,5 +8,5 @@
 <%= form_for @deal do |f|%>
 <%= f.hidden_field :game_id, value: @game.id  %>
 <%= f.hidden_field :player_id, value: @player.id %>
-<%= f.submit %>
+<%= f.submit "Join Game!" %>
 <% end %>

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :deals
-  resources :rounds
-  resources :hands
-  resources :games
+  resources :deals, only: [:show, :index, :new, :create, :edit]
+  resources :rounds, only: [:new, :create, :show]
+  resources :hands, only: [:new, :create]
+  resources :games, only: [:show, :index, :new, :create, :edit, :update, :destroy]
   resources :cards, only: [:show, :index]
-  resources :players
+  resources :players, only: [:new, :create, :show]
 
   get "login", to: "sessions#new"
   post "sessions", to: "sessions#create"
