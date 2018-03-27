@@ -7,9 +7,10 @@
 <h3><%= @leader.username %></h3>
 
 <% if current_user.leader == true %>
+  <p>Refresh until you have cards for all players!</p>
   <%= form_tag game_round_path(@game, @round), method: "get" do%>
     <%= label_tag :card %>
-      <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
+      <% @choices.values.map{ |choice| Card.find(choice)}.each do |card| %>
         <div class="game_card">
           <%= radio_button_tag :card_id, card.id %> <%= card.content %>
         </div>
@@ -17,5 +18,10 @@
     <%= submit_tag "Select Card" %>
   <% end %>
 <% else %>
-  <%= @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content} %>
+<ul>
+  <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
+    <li><%= card %></li>
+  <% end %>
+</ul>
+
 <% end %>
