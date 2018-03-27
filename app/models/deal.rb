@@ -24,5 +24,4 @@ class Deal < ApplicationRecord
     end
   end
 
-  # @player.id(x) 7.times do deal_a_card
 end

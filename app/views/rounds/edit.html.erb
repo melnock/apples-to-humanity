@@ -7,16 +7,15 @@
 <h3><%= @leader.username %></h3>
 
 <% if current_user.leader == true %>
-  <p>You are the current leader! Please wait for the other players to choose their answers.</p>
-  <%= link_to edit_game_round_path(@game, @round) %>
-<% else %>
-  <%= form_tag edit_game_round_path(@game, @round), method: "get" do%>
+  <%= form_tag game_round_path(@game, @round), method: "get" do%>
     <%= label_tag :card %>
-      <% @cards.each do |card| %>
+      <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
         <div class="game_card">
           <%= radio_button_tag :card_id, card.id %> <%= card.content %>
         </div>
       <% end %>
     <%= submit_tag "Select Card" %>
   <% end %>
+<% else %>
+  <%= @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content} %>
 <% end %>

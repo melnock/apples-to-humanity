@@ -1,5 +1,7 @@
 class RoundsController < ApplicationController
 
+    @@choices = {}
+
   def new
     find_game
     if @game.rounds.empty?
@@ -13,16 +15,32 @@ class RoundsController < ApplicationController
   end
 
   def show
-
     find_game
     find_round
     find_i
     @game.change_leader(@i)
     @leader = @game.choose_leader(@i)
+    find_cards_for_player
     @black_card = Card.find(@round.black_card_id)
   end
 
+  def edit
+    find_game
+    find_round
+    find_i
+    @leader = @game.choose_leader(@i)
+    @black_card = Card.find(@round.black_card_id)
+    @@choices[current_user.id] = params[:card]
+    @choices = @@choices
+  end
+
   private
+
+  def find_cards_for_player
+    @deal = Deal.all.find {|deal| deal.player == current_user && deal.game == @game}
+    @hands = Hand.all.select {|hand| hand.deal_id == @deal.id}
+    @cards = @hands.map{|h| h.card}
+  end
 
   def find_i
     @i = 0
