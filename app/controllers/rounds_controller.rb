@@ -32,8 +32,8 @@ class RoundsController < ApplicationController
     @black_card = Card.find(@round.black_card_id)
     if params[:card_id]
       @@choices[current_user.id] = params[:card_id]
-      @choices = @@choices
     end
+    @choices = @@choices
   end
 
   private
