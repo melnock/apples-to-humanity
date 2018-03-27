@@ -8,7 +8,7 @@
 
 <% if current_user.leader == true %>
   <p>You are the current leader! Please wait for the other players to choose their answers.</p>
-  <%= link_to edit_game_round_path(@game, @round) %>
+  <meta HTTP-EQUIV="REFRESH" content="20; url=<%= edit_game_round_path(@game, @round) %>">
 <% else %>
   <%= form_tag edit_game_round_path(@game, @round), method: "get" do%>
     <%= label_tag :card %>
