@@ -9,4 +9,6 @@
 <%= f.hidden_field :game_id, value: @game.id  %>
 <%= f.hidden_field :player_id, value: @player.id %>
 <%= f.submit "Join Game!" %>
+<% if @game.group_size %>
+  <%= button_to "Start Game", new_game_round_path %>
 <% end %>

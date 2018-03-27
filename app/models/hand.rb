@@ -7,8 +7,5 @@ class Hand < ApplicationRecord
     @cards.sample
   end
 
-  def get_a_black_card
-    @black_cards = Card.all.select{|card| card.black == true}
-    @black_cards.sample
-  end
+  
 end

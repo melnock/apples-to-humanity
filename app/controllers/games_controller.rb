@@ -17,9 +17,9 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     if @game.save
       @deal = Deal.create(game_id: @game.id, player_id: current_user.id)
-
       redirect_to @game
     else
+      flash[:notice] = "Fill out the form correctly, player!"
       redirect_to new_game_path
     end
   end
@@ -47,6 +47,6 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:name)
+    params.require(:game).permit(:name, :desired_group_size, :desired_number_of_rounds)
   end
 end
