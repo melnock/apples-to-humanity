@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :logged_in?
+  before_action :authorized
 
   def index
     @games = Game.all
