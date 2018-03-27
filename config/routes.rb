@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :games do
     resources :rounds
   end
+
   resources :cards, only: [:show, :index]
   resources :players, only: [:new, :create, :show]
 
