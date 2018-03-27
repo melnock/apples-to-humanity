@@ -36,6 +36,18 @@ class RoundsController < ApplicationController
     @choices = @@choices
   end
 
+
+  def results
+    @chosen_card = Card.find(params[:card_id])
+    if current_user.leader = true
+      @winner = Player.find(@@choices.key(params[:card_id]))
+      @winner.game_score += 1
+    end
+    find_cards_for_player
+    hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id)  }
+    byebug
+  end
+
   private
 
   def find_cards_for_player
