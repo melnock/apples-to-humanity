@@ -30,7 +30,7 @@ class RoundsController < ApplicationController
     find_i
     @leader = @game.choose_leader(@i)
     @black_card = Card.find(@round.black_card_id)
-    @@choices[current_user.id] = params[:card]
+    @@choices[current_user.id] = params[:card_id]
     @choices = @@choices
   end
 
