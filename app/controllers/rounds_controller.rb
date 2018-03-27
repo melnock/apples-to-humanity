@@ -38,6 +38,7 @@ class RoundsController < ApplicationController
 
 
   def results
+    @black_card = Card.find(@round.black_card_id)
     @chosen_card = Card.find(params[:card_id])
     if current_user.leader = true
       @winner = Player.find(@@choices.key(params[:card_id]))

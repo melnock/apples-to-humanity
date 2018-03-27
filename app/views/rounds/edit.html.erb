@@ -7,11 +7,7 @@
 <h3><%= @leader.username %></h3>
 
 <% if current_user.leader == true %>
-<<<<<<< HEAD
 <p>Refresh until you have cards for all players!</p>
-=======
-  <p>Refresh until you have cards for all players!</p>
->>>>>>> melissa
   <%= form_tag game_round_path(@game, @round), method: "get" do%>
     <%= label_tag :card %>
       <% @choices.values.map{ |choice| Card.find(choice)}.each do |card| %>
@@ -24,14 +20,8 @@
 <% else %>
 <ul>
   <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
-<<<<<<< HEAD
-  <li><%= card %></li>
-  <% end %>
-</ul>
-=======
     <li><%= card %></li>
   <% end %>
 </ul>
 
->>>>>>> melissa
 <% end %>
