@@ -8,9 +8,9 @@ class Game < ApplicationRecord
 
   def group_size
     find_all_deals
-    if self.desired_group_size == small
+    if self.desired_group_size == "small"
       @deals.length <= 5 && @deals.length >= 3
-    elsif self.desired_group_size == medium
+    elsif self.desired_group_size == "medium"
       @deals.length <= 8 && @deals.length >= 6
     else
       @deals.length <= 11 && @deals.length >= 9
@@ -23,17 +23,28 @@ class Game < ApplicationRecord
     self.number_of_rounds.times do
       round = Round.create(game_id: self.id)
       round.get_a_black_card
+      round.save
     end
   end
 
   def number_of_rounds
-    if self.desired_number_of_rounds == short
+    if self.desired_number_of_rounds == "short"
       @round_number = 8
-    elsif self.desired_number_of_rounds == medium
+    elsif self.desired_number_of_rounds == "medium"
       @round_number = 14
     else
       @round_number = 20
     end
+  end
+
+  def choose_leader(i)
+    @leader = self.players[i]
+    @leader.leader = true
+    @leader
+  end
+
+  def change_leader(i)
+    self.players[i-1].leader = false
   end
 
   private

@@ -1,0 +1,11 @@
+<h1><%= @game.name %></h1>
+<h3>Number of Rounds:</h3>
+<%= @game.number_of_rounds %>
+<h3>Players:</h3>
+<ul>
+  <% @game.players.each do |player| %>
+    <li><%= player.username %></li>
+  <% end %>
+</ul>
+
+<%= link_to "First Round", game_round_path(@game, @game.rounds[0]) %>

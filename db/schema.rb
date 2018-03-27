@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327132554) do
+ActiveRecord::Schema.define(version: 20180327160333) do
 
   create_table "cards", force: :cascade do |t|
     t.string "content"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20180327132554) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "leader"
   end
 
   create_table "rounds", force: :cascade do |t|

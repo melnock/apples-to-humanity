@@ -1,7 +1,10 @@
 class RoundsController < ApplicationController
 
   def new
-    @round = Round.new
+    find_game
+    if @game.rounds.empty?
+      @game.start_a_game
+    end
   end
 
   def create
@@ -10,10 +13,35 @@ class RoundsController < ApplicationController
   end
 
   def show
-    @round = Round.find(params[:id])
+
+    find_game
+    find_round
+    find_i
+    @game.change_leader(@i)
+    @leader = @game.choose_leader(@i)
+    @black_card = Card.find(@round.black_card_id)
   end
 
   private
+
+  def find_i
+    @i = 0
+    if @i < @game.players.length
+      @i = @game.rounds.index(@round)
+    elsif @i < (@game.players.length * 2)
+      @i = @game.rounds.index(@round) - @game.players.length
+    elsif @i < (@game.players.length * 3)
+      @i = @game.rounds.index(@round) - (@game.players.length * 2)
+    end
+  end
+
+  def find_game
+    @game = Game.find(params[:game_id])
+  end
+
+  def find_round
+    @round = Round.find(params[:id])
+  end
 
   def round_params
     params.require(:round).permit(:game_id, :black_card_id)
