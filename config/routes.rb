@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :deals
-  resources :rounds
-  resources :hands
-  resources :games
+  resources :deals do
+    resources :hands
+  end
+  resources :games do
+    resources :rounds
+  end
   resources :cards, only: [:show, :index]
   resources :players
 
