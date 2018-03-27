@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
 
   def create
     @player = Player.create(player_params)
-    redirect_to player_path(@player.id)
+    redirect_to login_path
   end
 
   def show

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :rounds
   end
   resources :cards, only: [:show, :index]
-  resources :players
+  resources :players, only: [:new, :create, :show]
 
   get "login", to: "sessions#new"
   post "sessions", to: "sessions#create"

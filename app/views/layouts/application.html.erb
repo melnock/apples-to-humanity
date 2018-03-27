@@ -6,6 +6,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= link_to "Games Index (Join A Game!)", games_path  %>
+    <%= link_to "Create New Game!", new_game_path%>
+    <%= link_to "View All Cards!", cards_path %>
+
+    <% if logged_in? %>
+    You are: <%= current_user.username %>
+    <%= button_to "Log Out", logout_path %>
+    <% end %>
+    <br>
+
   </head>
 
   <body>
