@@ -6,6 +6,8 @@ class RoundsController < ApplicationController
     find_game
     if @game.rounds.empty?
       @game.start_a_game
+    
+
     end
   end
 
@@ -40,6 +42,7 @@ class RoundsController < ApplicationController
 
 
   def results
+    @black_card = Card.find(@round.black_card_id)
     @chosen_card = Card.find(params[:card_id])
     if current_user.leader = true
       @winner = Player.find(@@choices.key(params[:card_id]))
