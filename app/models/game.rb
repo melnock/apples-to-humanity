@@ -40,6 +40,7 @@ class Game < ApplicationRecord
   def choose_leader(i)
     @leader = self.players[i]
     @leader.leader = true
+    @leader.save
     @leader
   end
 
