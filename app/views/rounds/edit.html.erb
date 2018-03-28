@@ -1,7 +1,7 @@
 <h1><%= @game.name %></h1>
 <br>
 
-<div class="black_card"><%= @black_card.content %></div>
+<div class="black_card ui toggle button"><%= @black_card.content %></div>
 
 <h2>Leader of Round:</h2>
 <h3><%= @leader.username %></h3>
@@ -25,14 +25,16 @@
     <% end %>
   </div>
 <% else %>
-<ul>
-  <div class="game_card">
+
+  <div class="game_card ui toggle button">
     <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
     <div class="header content card">
-      <li><%= card %></li>
+      <%= card %>
     </div>
     <% end %>
   </div>
-</ul>
+  <div class="ui button">
+    <%= link_to "See Results!", game_round_results_path(@game, @round), method: "get" %>
+  </div>
 
 <% end %>

@@ -9,6 +9,11 @@ class RoundsController < ApplicationController
       @game.start_a_game
     end
     @round = @game.rounds.find{|round| round.played == false}
+    if @round == nil
+      redirect_to games_path
+    end
+    @@choices = {}
+    @@chosen_card = ""
   end
 
   def create
@@ -41,6 +46,7 @@ class RoundsController < ApplicationController
 
   def results
     find_round
+    @game = @round.game
     @black_card = Card.find(@round.black_card_id)
     if params[:card_id]
       @@chosen_card = Card.find(params[:card_id])
@@ -50,15 +56,13 @@ class RoundsController < ApplicationController
       find_cards_for_player
       if find_cards_for_player.include?(@chosen_card)
         @winner = current_user
-        @winner.game_score += 1
       end
-      hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id)  }
+      hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id.to_s)  }
+      hand_to_destroy.destroy
+      @deal.deal_a_card
     end
     @round.played = true
     @round.save
-    @game = @round.game
-
-
   end
 
   private
@@ -70,9 +74,10 @@ class RoundsController < ApplicationController
   end
 
   def find_i
-    @i = 0
+    find_round
+    @i = @game.rounds.index(@round)
     if @i < @game.players.length
-      @i = @game.rounds.index(@round)
+      @i
     elsif @i < (@game.players.length * 2)
       @i = @game.rounds.index(@round) - @game.players.length
     elsif @i < (@game.players.length * 3)
