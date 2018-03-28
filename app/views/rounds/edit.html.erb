@@ -8,8 +8,9 @@
 <% end %>
 
 
-
-<div class="black_card ui toggle button"><%= @black_card.content %></div>
+<div class="box">
+  <div class="black_card ui"><%= @black_card.content %></div>
+</div>
 
 <h2>Leader of Round:</h2>
 <h3><%= @leader.username %></h3>
@@ -21,7 +22,7 @@
 
       <% @choices.values.map{ |choice| Card.find(choice)}.each do |card| %>
         <div class="game_card">
-            <div class="ui toggle inverted button radio">
+            <div class="ui toggle button radio">
               <div class="header content card">
                 <%= card.content %>
               </div>

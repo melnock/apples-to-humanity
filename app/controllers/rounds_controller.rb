@@ -63,7 +63,7 @@ class RoundsController < ApplicationController
           @winner = current_user
         end
         hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id.to_s)  }
-        hand_to_destroy.destroy if hand_to_destroy !=nil 
+        hand_to_destroy.destroy if hand_to_destroy !=nil
         @deal.deal_a_card
       end
       @round.played = true
