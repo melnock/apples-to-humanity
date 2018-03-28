@@ -4,7 +4,13 @@ class Game < ApplicationRecord
   has_many :cards, through: :deals
   has_many :rounds
   validates :name, :desired_group_size, :desired_number_of_rounds, presence: true
+  validate :small_groups_no_long_game
 
+  def small_groups_no_long_game
+    if self.desired_group_size == "small" && self.desired_number_of_rounds == "long"
+      errors.add(:desired_group_size, "can't play a long game with so few players.")
+    end
+  end
 
   def group_size
     find_all_deals

@@ -10,8 +10,10 @@ class RoundsController < ApplicationController
     end
     @round = @game.rounds.find{|round| round.played == false}
     if @round == nil
-     redirect_to games_path
-   end
+      redirect_to games_path
+    end
+    @@choices = {}
+    @@chosen_card = ""
   end
 
   def create
@@ -55,13 +57,18 @@ class RoundsController < ApplicationController
       if find_cards_for_player.include?(@chosen_card)
         @winner = current_user
       end
-      hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id)  }
+      hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id.to_s)  }
+      hand_to_destroy.destroy
+      @deal.deal_a_card
     end
     @round.played = true
     @round.save
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 22b96e6af323b9def2b1e134aa8e722c583adebd
   end
 
   private

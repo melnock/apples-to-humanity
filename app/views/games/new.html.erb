@@ -1,5 +1,9 @@
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
+<% if flash[:errors] %>
+  <div class="notice">
+    <% flash[:errors].each do |ugh| %>
+      <p><%= ugh %></p>
+    <% end %>
+  </div>
 <% end %>
 
 <%= form_for @game do |f|%>

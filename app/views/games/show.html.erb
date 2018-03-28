@@ -13,3 +13,6 @@
 <% if @game.group_size %>
   <%= link_to "Start Game", new_game_round_path(@game), method: "get" %>
 <% end %>
+<div class="delete-button">
+  <%=button_to "Delete", @game, method: "delete", data: { confirm: "Are you sure?" }%>
+</div>
