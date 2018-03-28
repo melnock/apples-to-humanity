@@ -46,6 +46,8 @@ class Game < ApplicationRecord
 
   def change_leader(i)
     self.players[i-1].leader = false
+    self.players[i-1].save
+    self.players[i-1]
   end
 
   private

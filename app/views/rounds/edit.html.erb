@@ -8,20 +8,31 @@
 
 <% if current_user.leader == true %>
 <p>Refresh until you have cards for all players!</p>
-  <%= form_tag game_round_path(@game, @round), method: "get" do%>
+  <%= form_tag game_round_results_path(@game, @round), method: "get" do%>
     <%= label_tag :card %>
+
       <% @choices.values.map{ |choice| Card.find(choice)}.each do |card| %>
         <div class="game_card">
-          <%= radio_button_tag :card_id, card.id %> <%= card.content %>
-        </div>
-      <% end %>
-    <%= submit_tag "Select Card" %>
-  <% end %>
+            <div class="ui toggle inverted button radio">
+              <div class="header content card">
+                <%= card.content %>
+              </div>
+                <%= radio_button_tag :card_id, card.id %>
+              </div>
+          </div>
+        <% end %>
+      <%= submit_tag "Select Card" %>
+    <% end %>
+  </div>
 <% else %>
 <ul>
-  <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
-    <li><%= card %></li>
-  <% end %>
+  <div class="game_card">
+    <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
+    <div class="header content card">
+      <li><%= card %></li>
+    </div>
+    <% end %>
+  </div>
 </ul>
 
 <% end %>

@@ -1,8 +1,9 @@
-<%= @black_card %>
-<%= @chosen_card %>
+<%= @black_card.content %>
+<%= @chosen_card.content %>
 
-<h3>Chosen by:</h3>
-<%= @winner.name %>
+<% if @winner %>
+<h3>You won the round!</h3>
+<% end %>
 
 
-<%= button_to "Next Round"  %>
+<%= button_to "Next Round", new_game_round_path(@game), method: "get" %>

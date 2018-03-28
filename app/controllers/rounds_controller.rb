@@ -6,9 +6,8 @@ class RoundsController < ApplicationController
     find_game
     if @game.rounds.empty?
       @game.start_a_game
-    
-
     end
+    @round = @game.rounds.find{|round| round.played == false}
   end
 
   def create
@@ -40,15 +39,22 @@ class RoundsController < ApplicationController
 
 
   def results
+    find_round
     @black_card = Card.find(@round.black_card_id)
     @chosen_card = Card.find(params[:card_id])
-    if current_user.leader = true
-      @winner = Player.find(@@choices.key(params[:card_id]))
-      @winner.game_score += 1
+    if !current_user.leader == true
+      find_cards_for_player
+      if find_cards_for_player.include?(@chosen_card)
+        @winner = current_user
+        @winner.game_score += 1
+      end
+      hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id)  }
     end
-    find_cards_for_player
-    hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id)  }
-    byebug
+    @round.played = true
+    @round.save
+    @game = @round.game
+
+
   end
 
   private
@@ -79,7 +85,7 @@ class RoundsController < ApplicationController
   end
 
   def round_params
-    params.require(:round).permit(:game_id, :black_card_id)
+    params.require(:round).permit(:game_id, :black_card_id, :played)
   end
 
 end
