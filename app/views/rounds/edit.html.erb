@@ -1,6 +1,14 @@
 <h1><%= @game.name %></h1>
 <br>
 
+<% if flash[:notice] %>
+<div class="notice">
+  <% flash[:notice] %>
+</div>
+<% end %>
+
+
+
 <div class="black_card ui toggle button"><%= @black_card.content %></div>
 
 <h2>Leader of Round:</h2>
@@ -33,6 +41,8 @@
     </div>
     <% end %>
   </div>
+
+
   <div class="ui button">
     <%= link_to "See Results!", game_round_results_path(@game, @round), method: "get" %>
   </div>

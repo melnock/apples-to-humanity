@@ -52,6 +52,10 @@ class RoundsController < ApplicationController
       @@chosen_card = Card.find(params[:card_id])
     end
     @chosen_card = @@chosen_card
+    if @chosen_card == nil
+      flash[:notice] = "No selection has been made yet! Try again soon!"
+      redirect_to edit_game_round_path(@game, @round)
+    end
     if !current_user.leader == true
       find_cards_for_player
       if find_cards_for_player.include?(@chosen_card)
