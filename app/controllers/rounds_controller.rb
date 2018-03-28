@@ -6,6 +6,10 @@ class RoundsController < ApplicationController
   def new
     find_game
     if @game.rounds.empty?
+      @game.players.each do |player|
+        player.leader = false
+        player.save
+      end
       @game.start_a_game
     end
     @round = @game.rounds.find{|round| round.played == false}
@@ -52,21 +56,22 @@ class RoundsController < ApplicationController
       @@chosen_card = Card.find(params[:card_id])
     end
     @chosen_card = @@chosen_card
-    if @chosen_card == nil
+    if @chosen_card != ""
+      if !current_user.leader == true
+        find_cards_for_player
+        if find_cards_for_player.include?(@chosen_card)
+          @winner = current_user
+        end
+        hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id.to_s)  }
+        hand_to_destroy.destroy if hand_to_destroy !=nil 
+        @deal.deal_a_card
+      end
+      @round.played = true
+      @round.save
+    else
       flash[:notice] = "No selection has been made yet! Try again soon!"
       redirect_to edit_game_round_path(@game, @round)
     end
-    if !current_user.leader == true
-      find_cards_for_player
-      if find_cards_for_player.include?(@chosen_card)
-        @winner = current_user
-      end
-      hand_to_destroy = @hands.find { |hand| @@choices.has_value?(hand.card.id.to_s)  }
-      hand_to_destroy.destroy
-      @deal.deal_a_card
-    end
-    @round.played = true
-    @round.save
   end
 
   private
