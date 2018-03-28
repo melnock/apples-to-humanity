@@ -1,6 +1,7 @@
 class RoundsController < ApplicationController
 
     @@choices = {}
+    @@chosen_card = ""
 
   def new
     find_game
@@ -41,7 +42,10 @@ class RoundsController < ApplicationController
   def results
     find_round
     @black_card = Card.find(@round.black_card_id)
-    @chosen_card = Card.find(params[:card_id])
+    if params[:card_id]
+      @@chosen_card = Card.find(params[:card_id])
+    end
+    @chosen_card = @@chosen_card
     if !current_user.leader == true
       find_cards_for_player
       if find_cards_for_player.include?(@chosen_card)
