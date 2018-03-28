@@ -20,15 +20,32 @@ body, *{
   text-align: center;
 }
 
+.image-logo{
+  padding: 0;
+  display: inline-block;
+  width: 50px;
+  margin: 0;
+  color: white;
+
+}
+
+.box{
+  position:relative;
+}
+
 .black_card{
   display: flex;
   justify-content: center;
   margin: auto;
   background: black;
   color: #eee;
+  width: 200px;
+  height: 300px;
+  border-radius: 5px;
 }
 
 .title{
+  display:inline-block;
   color: black;
 }
 
@@ -53,6 +70,7 @@ a:hover{
 
 .grid{
   display: grid;
+  position: relative;
   grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
   padding: 1rem;
   grid-gap: .5rem;
@@ -60,8 +78,12 @@ a:hover{
 
 .game_card{
   column-count: 3;
-  min-height: 200px;
-  min-width: 30%;
+}
+.card{
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 150px;
 }
 
 header{

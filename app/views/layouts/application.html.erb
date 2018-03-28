@@ -18,7 +18,18 @@
   <body>
 
     <header>
-      <a href="<%= games_path %>" class="title"><h1>APPLES TO HUMANITY or whatever</h1></a>
+      <div class="top ui huge header">
+        <div class="image-logo">
+          <!-- <img src="../img/noun_65206_cc.svg" alt="hmmm"> -->
+          <%= image_tag "noun_65206_cc.svg" %>
+        </div>
+        <a href="<%= games_path %>" class="title"><h1>APPLES TO HUMANITY or whatever</h1></a>
+        <div class="image-logo">
+          <!-- <img src="../img/noun_90153_cc.svg" alt="hmmm"> -->
+          <%= image_tag "noun_90153_cc.svg" %>
+
+        </div>
+      </div>
       <div class="header_links">
         <%= link_to "Games Index (Join A Game!)", games_path  %>  |
         <%= link_to "Create New Game!", new_game_path%>  |

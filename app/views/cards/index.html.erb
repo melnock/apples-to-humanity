@@ -1,10 +1,14 @@
 <h2>WHITE CARDS:</h2>
 <ul>
-  <% @cards.select do |card| %>
-  <% if card.black == false%>
-    <li><%= link_to card.content, card_path(card) %></li>
+  <div class="grid">
+    <% @cards.select do |card| %>
+    <% if card.black == false%>
+    <div class="ui card button toggle game_card">
+      <%= link_to card.content, card_path(card) %>
+    </div>
     <% end %>
-  <% end %>
+    <% end %>
+  </div>
 </ul>
 
 <h2>BLACK CARDS:</h2>
