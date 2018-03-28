@@ -63,12 +63,6 @@ class RoundsController < ApplicationController
     end
     @round.played = true
     @round.save
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 22b96e6af323b9def2b1e134aa8e722c583adebd
   end
 
   private
