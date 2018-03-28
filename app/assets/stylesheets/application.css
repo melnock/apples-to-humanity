@@ -13,3 +13,63 @@
  *= require_tree .
  *= require_self
  */
+
+body, *{
+  max-width: 960px;
+  margin:auto;
+  text-align: center;
+}
+
+.black_card{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background: black;
+  color: #eee;
+}
+
+.title{
+  color: black;
+}
+
+a:link{
+  color: black;
+}
+
+a:visited{
+  color: black;
+}
+
+a:hover{
+  color: #696969;
+}
+
+.header_links{
+  display: flex;
+  justify-content: space-around;
+  color: black;
+  font-family: sans-serif;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
+  padding: 1rem;
+  grid-gap: .5rem;
+}
+
+.game_card{
+  column-count: 3;
+  min-height: 200px;
+  min-width: 30%;
+}
+
+header{
+  max-width: 100%;
+  font-family: serif;
+  font-size: 20px;
+  color: black;
+  display: block;
+  margin: 0;
+  padding: 0;
+}

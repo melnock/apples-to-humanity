@@ -1,22 +1,35 @@
 <h1><%= @game.name %></h1>
 <br>
 
-<div class="black_card"><%= @black_card.content %></div>
+<div class="black_card ui card"><%= @black_card.content %></div>
 
 <h2>Leader of Round:</h2>
 <h3><%= @leader.username %></h3>
+<div class="ui divider"><hr></div>
 
 <% if current_user.leader == true %>
   <p>You are the current leader! Please wait for the other players to choose their answers.</p>
   <meta HTTP-EQUIV="REFRESH" content="20; url=<%= edit_game_round_path(@game, @round) %>">
 <% else %>
+<div class="ui cards">
   <%= form_tag edit_game_round_path(@game, @round), method: "get" do%>
     <%= label_tag :card %>
+    <div class="grid">
       <% @cards.each do |card| %>
         <div class="game_card">
-          <%= radio_button_tag :card_id, card.id %> <%= card.content %>
+
+            <div class="ui toggle inverted button radio">
+              <div class="header content card">
+                <%= card.content %>
+              </div>
+              <%= radio_button_tag :card_id, card.id %>
+            </div>
         </div>
       <% end %>
-    <%= submit_tag "Select Card" %>
+    </div>
+    <div class="ui">
+      <%= submit_tag "Select Card" %>
+    </div>
   <% end %>
+</div>
 <% end %>
