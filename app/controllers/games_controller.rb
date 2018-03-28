@@ -19,7 +19,7 @@ class GamesController < ApplicationController
       @deal = Deal.create(game_id: @game.id, player_id: current_user.id)
       redirect_to @game
     else
-      flash[:notice] = "Fill out the form correctly, player!"
+      flash[:errors]= @game.errors.full_messages
       redirect_to new_game_path
     end
   end
@@ -38,6 +38,7 @@ class GamesController < ApplicationController
   def destroy
     set_game
     @game.destroy
+    redirect_to games_path
   end
 
   private
