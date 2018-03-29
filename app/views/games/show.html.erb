@@ -9,11 +9,16 @@
 <%= form_for @deal do |f|%>
 <%= f.hidden_field :game_id, value: @game.id  %>
 <%= f.hidden_field :player_id, value: @player.id %>
-<%= f.submit "Join Game!" %>
-<% end %>
 <% if @game.group_size %>
-  <%= link_to "Start Game", new_game_round_path(@game), method: "get" %>
+  <div class='ui button'><%= link_to "Start Game", new_game_round_path(@game), method: "get" %><br></div>
 <% end %>
+
+<div class="join-button">
+  <br><%= f.submit "Join Game!", :class => "ui button" %>
+</div>
+<% end %>
+<br>
+
 <div class="delete-button">
-  <%=button_to "Delete", @game, method: "delete", data: { confirm: "Are you sure?" }%>
+  <%=button_to "Delete", @game, method: "delete", data: { confirm: "Are you sure?" }, :class => "ui button"%>
 </div>

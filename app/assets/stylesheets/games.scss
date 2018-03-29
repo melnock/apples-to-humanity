@@ -8,3 +8,12 @@
 .game {
   list-style-type: none;
 }
+
+.join-button, .delete-button {
+  top: 45px;
+  right: 10px;
+}
+
+.game :hover{
+  color: #696969;
+}
