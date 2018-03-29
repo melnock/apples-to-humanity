@@ -25,8 +25,6 @@ body, *{
   display: inline-block;
   width: 50px;
   margin: 0;
-  color: white;
-
 }
 
 .box{
@@ -36,6 +34,7 @@ body, *{
 .black_card{
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: auto;
   background: black;
   color: #eee;
@@ -44,17 +43,23 @@ body, *{
   border-radius: 5px;
 }
 
+.players{
+  column-count: 2;
+  position: block;
+  line-height: 2em;
+}
+
 .title{
   display:inline-block;
   color: black;
 }
 
 a:link{
-  color: black;
+  color: #800000;
 }
 
 a:visited{
-  color: black;
+  color: #800000;
 }
 
 a:hover{
@@ -82,6 +87,7 @@ a:hover{
 .card{
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100px;
   height: 150px;
 }
