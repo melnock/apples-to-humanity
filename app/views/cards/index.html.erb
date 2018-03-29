@@ -13,9 +13,13 @@
 
 <h2>BLACK CARDS:</h2>
 <ul>
+  <div class="grid">
   <% @cards.select do |card| %>
   <% if card.black == true%>
-    <li><%= link_to card.content, card_path(card) %></li>
+  <div class="ui card button toggle" id="black_card">
+    <%= link_to card.content, card_path(card) %>
+  </div>
     <% end %>
   <% end %>
+  </div>
 </ul>
