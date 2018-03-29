@@ -25,6 +25,7 @@
     </h4>
 
       <% @choices.values.map{ |choice| Card.find(choice)}.each do |card| %>
+      <div class="grid">
         <div class="game_card">
             <div class="ui toggle button radio">
               <div class="header content card">
@@ -34,6 +35,7 @@
               </div>
           </div>
         <% end %>
+      </div>
         <div class="ui">
           <%= submit_tag "Select Card", {class: 'ui button'}%> <br>
         </div>

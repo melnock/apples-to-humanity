@@ -4,10 +4,15 @@
       <%= @black_card.content %>
     </div>
   </div>
-  <div class="ui toggle inverted radio">
-    <div class="header content card">
-      <%= @chosen_card.content %>
+  <div class="box">
+
+  <div class="ui cards ">
+    <div class="ui toggle black_card button">
+      <div class="header content  card">
+        <%= @chosen_card.content %>
+      </div>
     </div>
+</div>
   </div>
 </div>
 
@@ -16,4 +21,4 @@
 <% end %>
 
 
-<%= button_to "Next Round", new_game_round_path(@game), method: "get", {class: 'ui button'} %>
+<%= button_to "Next Round", new_game_round_path(@game), method: "get" %>
