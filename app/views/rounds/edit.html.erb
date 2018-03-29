@@ -18,7 +18,11 @@
 <% if current_user.leader == true %>
 <p class="warning">Refresh until you have cards for all players!</p>
   <%= form_tag game_round_results_path(@game, @round), method: "get" do%>
-    <%= label_tag :card %>
+
+    <h4 class="ui horizontal divider header">
+      <i class="heart icon"></i>
+      Cards
+    </h4>
 
       <% @choices.values.map{ |choice| Card.find(choice)}.each do |card| %>
         <div class="game_card">
@@ -30,7 +34,9 @@
               </div>
           </div>
         <% end %>
-      <%= submit_tag "Select Card" %>
+        <div class="ui">
+          <%= submit_tag "Select Card", {class: 'ui button'}%> <br>
+        </div>
     <% end %>
   </div>
 <% else %>

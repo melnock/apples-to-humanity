@@ -1,9 +1,7 @@
 <h1><%= @game.name %></h1>
 <br>
 
-<div class="box">
-  <div class="black_card ui"><%= @black_card.content %></div>
-</div>
+<div class="black_card ui card"><%= @black_card.content %></div>
 
 <h2>Leader of Round:</h2>
 <h3><%= @leader.username %></h3>
@@ -20,7 +18,7 @@
       <% @cards.each do |card| %>
         <div class="game_card">
 
-            <div class="ui toggle button radio">
+            <div class="ui toggle inverted button radio">
               <div class="header content card">
                 <%= card.content %>
               </div>
@@ -30,7 +28,7 @@
       <% end %>
     </div>
     <div class="ui">
-      <%= submit_tag "Select Card", html:{:class=>"ui button"} %>
+      <%= submit_tag "Select Card", {class: "ui button"} %>
     </div>
   <% end %>
 </div>

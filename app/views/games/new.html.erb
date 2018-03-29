@@ -8,13 +8,16 @@
 <div class="form">
   <%= form_for @game do |f|%>
   <%= f.label :name %>
+  <br>
   <%= f.text_field :name %>
   <br>
   <%= f.label :desired_group_size %>
-  <%= f.select :desired_group_size, ["small", "medium", "large"] %>
+  <br>
+  <%= f.select :desired_group_size, ["small", "medium", "large"], {}, { :class => 'ui selection dropdown' } %>
   <br>
   <%= f.label :desired_number_of_rounds %>
-  <%= f.select :desired_number_of_rounds, ["short", "medium", "long"]  %>
+  <br>
+  <%= f.select :desired_number_of_rounds, ["short", "medium", "long"], {}, { :class => 'ui selection dropdown' }  %>
   <br>
   <%= f.submit %>
   <% end %>

@@ -22,7 +22,8 @@ body, *{
 
 .image-logo{
   padding: 0;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   width: 50px;
   margin: 0;
 }
@@ -62,7 +63,7 @@ a:visited{
   color: #800000;
 }
 
-a:hover{
+.header_links a:hover{
   color: #696969;
 }
 
@@ -100,4 +101,26 @@ header{
   display: block;
   margin: 0;
   padding: 0;
+}
+
+.logout-button {
+  position: fixed;
+  top: 45px;
+  right: 10px;
+}
+.form label{
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 2em;
+}
+
+footer{
+  position:fixed;
+  bottom: 5px;
+  right: 10px;
+  color: #696969;
+}
+
+.card-header{
+
 }

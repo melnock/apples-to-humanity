@@ -20,23 +20,19 @@
     <header>
       <div class="top ui huge header">
         <div class="image-logo">
-          <!-- <img src="../img/noun_65206_cc.svg" alt="hmmm"> -->
-          <%= image_tag "noun_65206_cc.png" %>
+          <a href="<%= games_path %>" class="title">
+            <%= image_tag "header-apples-humanity.png" %>
+          </a>
         </div>
-        <a href="<%= games_path %>" class="title"><h1>APPLES TO HUMANITY or whatever</h1></a>
-        <div class="image-logo">
-          <!-- <img src="../img/noun_90153_cc.svg" alt="hmmm"> -->
-          <%= image_tag "noun_90153_cc.png" %>
 
-        </div>
       </div>
       <div class="header_links">
-        <%= link_to "Games Index (Join A Game!)", games_path  %>  |
+        <%= link_to "Join A Game!", games_path  %>  |
         <%= link_to "Create New Game!", new_game_path%>  |
         <%= link_to "View All Cards!", cards_path %>  |
         <% if logged_in? %>
         You are: <a href="<%= player_path(current_user) %>"><%= current_user.username %></a>
-        <div class="logout-button"><%= button_to "Log Out", logout_path %></div>
+        <div class="logout-button"><%= button_to "Log Out", logout_path, :class => "ui button" %></div>
         <% end %>
       </div>
 
@@ -44,5 +40,6 @@
 
 
     <%= yield %>
+    <footer> <br> <br>2018 Apples against Humanity :: Stacey Marks :: Melissa Nock </footer>
   </body>
 </html>
