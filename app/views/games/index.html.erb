@@ -1,6 +1,29 @@
+
+<h4 class="ui horizontal divider header">
+  <i class="pencil alternative icon"></i>
+  Instructions
+</h4>
+
+  <p>Welcome to Apples to Humanity!</p>
+  <p>To play a game you can either join an existing game or create your own.</p>
+  <p>Each game has a minimum number of players and a specific number of rounds that will be played. </p>
+  <p>Each round will have one black card that is the question. The leader will be the holder of the black card.</p>
+  <p>Each other player will look through their white cards to choose an appropriate (or inappropriate, your choice!) card to answer the black card.</p>
+  <p>The leader chooses their favorite card, and play moves on to the next round with a new leader and black card.</p>
+
 <br>
-<ul>
-  <% @games.each do |game| %>
-    <div class="game"><li><h2><%= link_to game.name, game_path(game) %></h2> </div></li>
-  <% end %>
-</ul>
+<h4 class="ui horizontal divider header">
+  <i class="coffee icon"></i>
+Games
+</h4>
+
+  <div class="game-list clearfix">
+    <% @games.each do |game| %>
+    <div class="hover">
+    <span><div class="game"><h2>  <%= link_to game.name, game_path(game) %>  </h2>
+      <div class="tooltip">
+          <%= game.desired_group_size %> | <%= game.desired_number_of_rounds %>  
+      </div></div></span>
+    </div>
+    <% end %>
+  </div>

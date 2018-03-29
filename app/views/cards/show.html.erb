@@ -1,2 +1,17 @@
+
+<h4 class="ui horizontal divider header">
+  <i class="apple icon"></i>Card Content
+</h4>
+
+<h1><%= @card.content %></h1>
+
+<h4 class="ui horizontal divider header">
+  <i class="anchor icon"></i>dum doh
+</h4>
+
+
 Question card? <%= @card.black %> <br>
-<%= @card.content %>
+
+<div class="image-random">
+  <%= image_tag  @card.choose_img %>
+</div>
