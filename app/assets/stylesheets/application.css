@@ -85,6 +85,7 @@ a:visited{
 .game_card{
   column-count: 3;
 }
+
 .card{
   display: flex;
   justify-content: center;
