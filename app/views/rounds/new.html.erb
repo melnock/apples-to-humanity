@@ -8,7 +8,7 @@
 </div>
 
 <h3>Round:</h3>
-<p><%= @game.rounds.index(@round) %> of <%= @game.number_of_rounds %></p>
+<p><%= @game.rounds.index(@round)+1 %> of <%= @game.number_of_rounds %></p>
 <br><br>
   <div class="ui button">
     <%= link_to "Start Round", game_round_path(@game, @round) %>

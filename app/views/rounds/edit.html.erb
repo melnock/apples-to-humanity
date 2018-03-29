@@ -16,6 +16,7 @@
 <h3><%= @leader.username %></h3>
 
 <% if current_user.leader == true %>
+<<<<<<< HEAD
 <p class="warning">Refresh until you have cards for all players!</p>
   <%= form_tag game_round_results_path(@game, @round), method: "get" do%>
 
@@ -27,30 +28,42 @@
       <% @choices.values.map{ |choice| Card.find(choice)}.each do |card| %>
       <div class="grid">
         <div class="game_card">
+=======
+  <p class="warning">Refresh until you have cards for all players!</p>
+    <%= form_tag game_round_results_path(@game, @round), method: "get" do%>
+      <h4 class="ui horizontal divider header">
+        <i class="heart icon"></i> Cards </h4>
+      <div class="grid">
+        <% @choices.values.map{ |choice| Card.find(choice)}.each do |card| %>
+          <div class="game_card box">
+>>>>>>> fc0678113cfd91aa17b1225cd66797e923b51676
             <div class="ui toggle button radio">
               <div class="header content card">
                 <%= card.content %>
               </div>
-                <%= radio_button_tag :card_id, card.id %>
-              </div>
+              <%= radio_button_tag :card_id, card.id %>
+            </div>
           </div>
         <% end %>
       </div>
         <div class="ui">
           <%= submit_tag "Select Card", {class: 'ui button'}%> <br>
         </div>
-    <% end %>
-  </div>
-<% else %>
-<div class="game_card">
-  <div class="ui toggle button">
-    <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
-    <div class="header content card">
-      <%= card %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
+<% else %>
+  <div class="grid">
+    <div class="game_card">
+      <div class="ui toggle button">
+        <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
+        <div class="header content card">
+          <%= card %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
 
 
   <div class="ui button">
