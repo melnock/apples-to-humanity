@@ -1,7 +1,8 @@
 <h1><%= @game.name %></h1>
 <br>
-
-<div class="black_card ui card"><%= @black_card.content %></div>
+<div class="box">
+  <div class="black_card ui"><%= @black_card.content %></div>
+</div>
 
 <h2>Leader of Round:</h2>
 <h3><%= @leader.username %></h3>
@@ -13,12 +14,15 @@
 <% else %>
 <div class="ui cards">
   <%= form_tag edit_game_round_path(@game, @round), method: "get" do%>
-    <%= label_tag :card %>
+  <h4 class="ui horizontal divider header">
+    <i class="heart icon"></i>
+    Your Cards
+  </h4>
     <div class="grid">
       <% @cards.each do |card| %>
         <div class="game_card">
 
-            <div class="ui toggle inverted button radio">
+            <div class="ui toggle button radio">
               <div class="header content card">
                 <%= card.content %>
               </div>

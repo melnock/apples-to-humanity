@@ -83,7 +83,9 @@ a:visited{
 }
 
 .game_card{
-  column-count: 3;
+  display:inline-block;
+  align-items: center;
+  column-count: 4;
 }
 
 .card{

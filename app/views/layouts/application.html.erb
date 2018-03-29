@@ -26,20 +26,25 @@
         </div>
 
       </div>
+      <div class="ui four item menu">
       <div class="header_links">
-        <%= link_to "Join A Game!", games_path  %>  |
-        <%= link_to "Create New Game!", new_game_path%>  |
-        <%= link_to "View All Cards!", cards_path %>  |
+        <%= link_to "Join A Game!", games_path, {class: "item"} %>  |
+        <%= link_to "Create New Game!", new_game_path, {class: "item"}%>  |
+        <%= link_to "View All Cards!", cards_path, {class: "item"}%>  |
         <% if logged_in? %>
-        You are: <a href="<%= player_path(current_user) %>"><%= current_user.username %></a>
+        <a href="<%= player_path(current_user) %>", class= "item">You are: <%= current_user.username %></a>
         <div class="logout-button"><%= button_to "Log Out", logout_path, :class => "ui button" %></div>
         <% end %>
       </div>
+    </div>
 
     </header>
 
 
     <%= yield %>
-    <footer> <br> <br>2018 Apples against Humanity :: Stacey Marks :: Melissa Nock </footer>
+    <h4 class="ui horizontal divider header">
+      <i class="child icon"></i>apples to humanity
+    </h4>
+    <footer> <br> <br>2018 :: Stacey Marks :: Melissa Nock </footer>
   </body>
 </html>
