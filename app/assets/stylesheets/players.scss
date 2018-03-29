@@ -1,3 +1,32 @@
 // Place all the styles related to the players controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.username-display{
+  color: #800000;
+}
+
+input[type=text], input[type=password]{
+  width: 55%;
+  padding: 5px 5px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 2px solid #800000;
+  border-radius: 4px;
+}
+
+input[type=submit]{
+      background-color: #800000;
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      text-decoration: none;
+      margin: 5px 1px;
+      border-radius: 4px;
+      cursor: pointer;
+}
+
+.players-notice{
+  color: #800000;
+}

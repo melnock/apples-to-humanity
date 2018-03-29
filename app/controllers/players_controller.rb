@@ -6,7 +6,12 @@ class PlayersController < ApplicationController
 
   def create
     @player = Player.create(player_params)
-    redirect_to login_path
+    if @player.valid?
+      redirect_to login_path
+    else
+      flash[:notice] = "Please enter valid username and password!"
+      redirect_to new_player_path
+    end
   end
 
   def show

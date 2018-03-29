@@ -36,7 +36,7 @@
         <%= link_to "View All Cards!", cards_path %>  |
         <% if logged_in? %>
         You are: <a href="<%= player_path(current_user) %>"><%= current_user.username %></a>
-        <%= button_to "Log Out", logout_path %>
+        <div class="logout-button"><%= button_to "Log Out", logout_path %></div>
         <% end %>
       </div>
 

@@ -1,5 +1,5 @@
 <ul>
   <% @games.each do |game| %>
-    <div class="game"><li><%= link_to game.name, game_path(game) %> </div></li>
+    <div class="game"><li><h2><%= link_to game.name, game_path(game) %></h2> </div></li>
   <% end %>
 </ul>
