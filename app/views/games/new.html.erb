@@ -5,16 +5,17 @@
     <% end %>
   </div>
 <% end %>
-
-<%= form_for @game do |f|%>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<br>
-<%= f.label :desired_group_size %>
-<%= f.select :desired_group_size, ["small", "medium", "large"] %>
-<br>
-<%= f.label :desired_number_of_rounds %>
-<%= f.select :desired_number_of_rounds, ["short", "medium", "long"]  %>
-<br>
-<%= f.submit %>
-<% end %>
+<div class="form">
+  <%= form_for @game do |f|%>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :desired_group_size %>
+  <%= f.select :desired_group_size, ["small", "medium", "large"] %>
+  <br>
+  <%= f.label :desired_number_of_rounds %>
+  <%= f.select :desired_number_of_rounds, ["short", "medium", "long"]  %>
+  <br>
+  <%= f.submit %>
+  <% end %>
+</div>

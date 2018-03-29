@@ -16,15 +16,15 @@ input[type=text], input[type=password]{
   border-radius: 4px;
 }
 
-input[type=submit]{
-      background-color: #800000;
-      border: none;
-      color: white;
-      padding: 10px 24px;
-      text-decoration: none;
-      margin: 5px 1px;
-      border-radius: 4px;
-      cursor: pointer;
+.form input[type=submit]{
+  background-color: #800000;
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  text-decoration: none;
+  margin: 5px 1px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .players-notice{

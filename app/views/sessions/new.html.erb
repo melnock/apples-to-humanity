@@ -1,10 +1,16 @@
 <br>
-<%= form_tag "sessions" do %>
+<div class="form">
+  <%= form_tag "sessions" do %>
   <%= label_tag :username %> <br>
   <%= text_field_tag :username %> <br>
   <%= label_tag :password %> <br>
   <%= password_field_tag :password %> <br>
   <%= submit_tag "Login" %> <br>
-<% end %> <br>
+  <% end %>
+  <br>
+</div>
 
-<%= link_to "Sign Up!", new_player_path %>
+<br>
+<div class="ui button">
+  <%= link_to "Sign Up!", new_player_path %>
+</div>
