@@ -2,8 +2,8 @@
 <br>
 
 <% if flash[:notice] %>
-<div class="notice">
-  <%= flash[:notice] %>
+<div class="notice warning">
+  <% flash[:notice] %>
 </div>
 <% end %>
 
@@ -16,7 +16,7 @@
 <h3><%= @leader.username %></h3>
 
 <% if current_user.leader == true %>
-<p>Refresh until you have cards for all players!</p>
+<p class="warning">Refresh until you have cards for all players!</p>
   <%= form_tag game_round_results_path(@game, @round), method: "get" do%>
     <%= label_tag :card %>
 
@@ -34,14 +34,15 @@
     <% end %>
   </div>
 <% else %>
-
-  <div class="game_card ui toggle button">
+<div class="game_card">
+  <div class="ui toggle button">
     <% @choices.values.map{ |choice| Card.find(choice)}.map{|c| c.content}.each do |card| %>
     <div class="header content card">
       <%= card %>
     </div>
     <% end %>
   </div>
+</div>
 
 
   <div class="ui button">

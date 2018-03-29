@@ -1,11 +1,15 @@
 <h1><%= @game.name %></h1>
-<h3>Number of Rounds:</h3>
-<%= @game.number_of_rounds %>
-<h3>Players:</h3>
-<ul>
-  <% @game.players.each do |player| %>
-    <li><%= player.username %></li>
-  <% end %>
-</ul>
 
-<%= link_to "Start Round", game_round_path(@game, @round) %>
+<h3>Players:</h3>
+<div class="players">
+  <% @game.players.each do |player| %>
+    <img class="ui avatar image" src="/assets/card_spade.png"><span> | <%= player.username %><br><br></span>
+  <% end %>
+</div>
+
+<h3>Round:</h3>
+<p><%= @game.rounds.index(@round) %> of <%= @game.number_of_rounds %></p>
+<br><br>
+  <div class="ui button">
+    <%= link_to "Start Round", game_round_path(@game, @round) %>
+  </div>
