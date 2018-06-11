@@ -3,31 +3,16 @@
 https://youtu.be/eNj0o_qLcUQ 
 
 
+## Set-up
 
+Fork and clone this repository. 
 
+run `rails db:create`, `rails db:migrate`, and `rails db:seed` to create the database of black and white cards.
 
+`rails server` to start the server.
 
-# README
+open your local host in the browser. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Now Play! 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you want to play multi-player on the same local host, using a plugin like ngrok can facilitate that.
